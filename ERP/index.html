@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>College ERP | Student Portal</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-mark">ERP</div>
+        <div><strong>CampusOne</strong><small>Student Portal</small></div>
+      </div>
+
+      <div class="profile-mini">
+        <div class="avatar">SK</div>
+        <div><strong>Suhan Khan</strong><small>Student · ISE</small></div>
+      </div>
+
+      <p class="nav-label">MAIN MENU</p>
+      <nav class="nav">
+        <button class="nav-item active" data-page="dashboard"><span>▦</span> Dashboard</button>
+        <button class="nav-item" data-page="attendance"><span>◷</span> Attendance</button>
+        <button class="nav-item" data-page="timetable"><span>▤</span> Timetable</button>
+        <button class="nav-item" data-page="results"><span>▥</span> Results & Grades</button>
+        <button class="nav-item" data-page="fees"><span>₹</span> Fee Details</button>
+        <button class="nav-item" data-page="assignments"><span>☷</span> Assignments</button>
+        <button class="nav-item" data-page="announcements"><span>♢</span> Announcements</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="help-card"><strong>Need help?</strong><p>Contact your college ERP administrator.</p><a href="mailto:erp-support@example.edu">Get support ↗</a></div>
+        <button class="nav-item" id="logoutBtn"><span>↪</span> Sign out</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
+        <div class="breadcrumbs"><span>Student Portal</span><b>/</b><strong id="crumb">Dashboard</strong></div>
+        <div class="top-actions">
+          <button class="icon-button" id="notificationBtn" aria-label="Notifications">♧<i></i></button>
+          <div class="top-profile"><div class="avatar small">SK</div><span>Suhan Khan</span><span class="chevron">⌄</span></div>
+        </div>
+      </header>
+
+      <section class="page-content">
+        <div class="welcome-row">
+          <div><p class="eyebrow" id="todayLabel">STUDENT OVERVIEW</p><h1 id="pageTitle">Welcome back, Suhan <span>👋</span></h1><p class="subheading" id="pageSubtitle">Here’s what’s happening with your academics today.</p></div>
+          <div class="semester-pill"><span class="status-dot"></span> Academic Year 2026–27 <b>·</b> Semester 3</div>
+        </div>
+
+        <div id="dashboardPage" class="page-panel">
+          <div class="stats-grid">
+            <article class="stat-card"><div class="stat-top"><span>Attendance</span><span class="stat-icon blue">◷</span></div><div class="stat-number">86.4<span>%</span></div><div class="stat-foot"><span class="positive">↑ 2.4%</span> <span>from last month</span></div><div class="progress"><span style="width:86.4%"></span></div></article>
+            <article class="stat-card"><div class="stat-top"><span>Current CGPA</span><span class="stat-icon purple">✧</span></div><div class="stat-number">7.40<span>/10</span></div><div class="stat-foot"><span class="positive">On track</span><span>· Semester average</span></div><div class="progress purple-progress"><span style="width:74%"></span></div></article>
+            <article class="stat-card"><div class="stat-top"><span>Pending Assignments</span><span class="stat-icon orange">☷</span></div><div class="stat-number">03</div><div class="stat-foot"><span class="warning">2 due soon</span><span>· Check your tasks</span></div><div class="progress orange-progress"><span style="width:40%"></span></div></article>
+            <article class="stat-card"><div class="stat-top"><span>Fee Status</span><span class="stat-icon green">₹</span></div><div class="stat-number status-number">Up to date</div><div class="stat-foot"><span class="positive">No dues</span><span>· As of today</span></div><div class="progress green-progress"><span style="width:100%"></span></div></article>
+          </div>
+
+          <div class="content-grid">
+            <section class="panel schedule-panel">
+              <div class="panel-heading"><div><h2>Today’s Schedule</h2><p>Your classes for the day</p></div><button class="text-button" data-goto="timetable">View timetable ↗</button></div>
+              <div class="schedule-list">
+                <div class="schedule-item"><div class="time">09:00<small>– 10:00</small></div><div class="timeline"><span class="timeline-dot blue-dot"></span></div><div class="class-details"><strong>Data Structures</strong><p>Room 204 · Prof. Rao</p></div><span class="class-tag blue-tag">Lecture</span></div>
+                <div class="schedule-item"><div class="time">10:15<small>– 11:15</small></div><div class="timeline"><span class="timeline-dot purple-dot"></span></div><div class="class-details"><strong>Database Management</strong><p>Lab 2 · Prof. Nair</p></div><span class="class-tag purple-tag">Lab</span></div>
+                <div class="schedule-item"><div class="time">11:30<small>– 12:30</small></div><div class="timeline"><span class="timeline-dot orange-dot"></span></div><div class="class-details"><strong>Computer Networks</strong><p>Room 108 · Prof. Kumar</p></div><span class="class-tag orange-tag">Lecture</span></div>
+                <div class="schedule-item"><div class="time">13:30<small>– 14:30</small></div><div class="timeline"><span class="timeline-dot green-dot"></span></div><div class="class-details"><strong>Web Technologies</strong><p>Lab 1 · Prof. Shah</p></div><span class="class-tag green-tag">Practical</span></div>
+              </div>
+            </section>
+
+            <section class="panel announcements-panel">
+              <div class="panel-heading"><div><h2>Latest Announcements</h2><p>Updates from your college</p></div><button class="text-button" data-goto="announcements">View all ↗</button></div>
+              <div class="announcement"><div class="announcement-icon blue">▣</div><div><strong>Internal assessment schedule</strong><p>Check the updated IA timetable for Semester 3.</p><small>Today · Academics</small></div></div>
+              <div class="announcement"><div class="announcement-icon orange">◈</div><div><strong>Workshop registration open</strong><p>Register for upcoming technical workshops.</p><small>Yesterday · Student activities</small></div></div>
+              <div class="announcement"><div class="announcement-icon purple">♧</div><div><strong>Library reminder</strong><p>Please return books before the due date.</p><small>2 days ago · Library</small></div></div>
+            </section>
+          </div>
+
+          <section class="panel tasks-panel">
+            <div class="panel-heading"><div><h2>Upcoming Assignments</h2><p>Keep track of your academic tasks</p></div><button class="text-button" data-goto="assignments">All assignments ↗</button></div>
+            <div class="table-wrap"><table><thead><tr><th>SUBJECT</th><th>ASSIGNMENT</th><th>DUE DATE</th><th>STATUS</th><th></th></tr></thead><tbody>
+              <tr><td><span class="subject-dot dot-blue"></span> Web Technologies</td><td>Responsive landing page</td><td>05 Nov 2026</td><td><span class="badge badge-orange">In progress</span></td><td><button class="row-action" data-goto="assignments">Open →</button></td></tr>
+              <tr><td><span class="subject-dot dot-purple"></span> Data Structures</td><td>Linked list exercises</td><td>07 Nov 2026</td><td><span class="badge badge-red">Pending</span></td><td><button class="row-action" data-goto="assignments">Open →</button></td></tr>
+              <tr><td><span class="subject-dot dot-green"></span> DBMS</td><td>SQL query practice</td><td>10 Nov 2026</td><td><span class="badge badge-blue">Not started</span></td><td><button class="row-action" data-goto="assignments">Open →</button></td></tr>
+            </tbody></table></div>
+          </section>
+          <p class="demo-note">Demo interface · Sample student data only · Not connected to a real college ERP</p>
+        </div>
+
+        <div id="otherPage" class="page-panel hidden">
+          <section class="panel detail-panel">
+            <div class="panel-heading"><div><h2 id="detailHeading">Section</h2><p id="detailDescription">Your information will appear here.</p></div><span class="section-symbol" id="detailSymbol">▤</span></div>
+            <div id="detailContent"></div>
+          </section>
+          <p class="demo-note">Demo interface · Sample student data only · Not connected to a real college ERP</p>
+        </div>
+      </section>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
