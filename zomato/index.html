@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zomato Clone - Discover Best Food</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">Zomato</div>
+        <div class="nav-search-container">
+            <div class="location-selector">
+                <i class="fas fa-map-marker-alt"></i>
+                <select id="location-select">
+                    <option value="Delhi">New Delhi</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Bangalore">Bengaluru</option>
+                    <option value="Pune">Pune</option>
+                </select>
+            </div>
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" id="nav-search" placeholder="Search for restaurant, cuisine or a dish">
+            </div>
+        </div>
+        <div class="nav-actions">
+            <button class="cart-btn" id="open-cart-btn">
+                <i class="fas fa-shopping-cart"></i> Cart <span id="cart-count">0</span>
+            </button>
+            <button class="login-btn">Log in</button>
+            <button class="signup-btn">Sign up</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Zomato</h1>
+            <p>Discover the best food & drinks in <span id="hero-location">New Delhi</span></p>
+            <div class="hero-search">
+                <i class="fas fa-search"></i>
+                <input type="text" id="main-search" placeholder="Search for restaurant, cuisine or a dish">
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        
+        <!-- Category Cards -->
+        <section class="categories">
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1526367790999-0150786686a2?auto=format&fit=crop&w=400&q=80" alt="Order Online">
+                <div class="category-info">
+                    <h3>Order Online</h3>
+                    <p>Stay home and order to your door</p>
+                </div>
+            </div>
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=400&q=80" alt="Dining">
+                <div class="category-info">
+                    <h3>Dining Out</h3>
+                    <p>View the city's favourite dining venues</p>
+                </div>
+            </div>
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1566737236500-c8ac43014a67?auto=format&fit=crop&w=400&q=80" alt="Nightlife">
+                <div class="category-info">
+                    <h3>Nightlife & Clubs</h3>
+                    <p>Explore the city's top nightlife outlets</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Food Inspiration Categories -->
+        <section class="food-inspiration">
+            <h2>Inspiration for your first order</h2>
+            <div class="food-types" id="food-types-container">
+                <!-- Injected via JS -->
+            </div>
+        </section>
+
+        <!-- Filters -->
+        <section class="filters">
+            <button class="filter-btn" id="filter-veg">Pure Veg</button>
+            <button class="filter-btn" id="filter-rating">Rating: 4.0+</button>
+            <button class="filter-btn" id="filter-time">Fast Delivery</button>
+            <button class="filter-btn" id="clear-filters">Clear Filters</button>
+        </section>
+
+        <!-- Restaurants Grid -->
+        <section class="restaurants-section">
+            <h2>Delivery Restaurants in <span id="section-location">New Delhi</span></h2>
+            <div id="no-results" class="hidden">No restaurants found matching your search or filters.</div>
+            <div class="restaurant-grid" id="restaurant-grid">
+                <!-- Injected via JS -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-column">
+                <h2 class="logo-footer">Zomato</h2>
+            </div>
+            <div class="footer-column">
+                <h4>About Zomato</h4>
+                <ul>
+                    <li><a href="#">Who We Are</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>For Restaurants</h4>
+                <ul>
+                    <li><a href="#">Partner With Us</a></li>
+                    <li><a href="#">Apps For You</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Learn More</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Social Links</h4>
+                <div class="social-icons">
+                    <i class="fab fa-facebook"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-youtube"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Restaurant Details Modal -->
+    <div class="modal-overlay" id="restaurant-modal">
+        <div class="modal-content">
+            <button class="close-modal" id="close-restaurant-modal">&times;</button>
+            <div id="modal-restaurant-header"></div>
+            <div class="menu-container" id="menu-container">
+                <!-- Menu items injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Shopping Cart Modal -->
+    <div class="modal-overlay" id="cart-modal">
+        <div class="modal-content">
+            <button class="close-modal" id="close-cart-modal">&times;</button>
+            <h2>Your Cart</h2>
+            <div id="cart-items-container">
+                <!-- Cart items injected via JS -->
+            </div>
+            <div class="cart-summary">
+                <div class="cart-total">Total: <span id="cart-total-price">₹0</span></div>
+                <button class="checkout-btn">Proceed to Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
