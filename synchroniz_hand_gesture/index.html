@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIRDRAW FUTURE | Holographic Studio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Welcome / Loading Screen -->
+    <div id="welcome-screen" class="overlay-screen active">
+        <div class="hologram-logo">
+            <div class="glow-ring"></div>
+            <div class="hand-icon">✋</div>
+        </div>
+        <h1 class="glitch" data-text="AIRDRAW FUTURE">AIRDRAW FUTURE</h1>
+        <p class="subtitle">FUTURISTIC HAND-SYNCHRONIZED DRAWING INTERFACE</p>
+        
+        <div id="camera-permission-box">
+            <p>SYSTEM REQUIRES OPTICAL SENSOR (WEBCAM) ACCESS TO TRACK HAND METRICS.</p>
+            <p class="warning-text">Ensure you are running on localhost or HTTPS.</p>
+            <button id="btn-activate-camera" class="neon-btn">ACTIVATE SENSORS</button>
+        </div>
+
+        <div id="loading-box" class="hidden">
+            <div class="loader"></div>
+            <p>INITIALIZING NEURAL TRACKING MODEL...</p>
+        </div>
+
+        <div id="error-box" class="hidden error-text">
+            <p id="error-message">ERROR: OPTICAL SENSOR UNAVAILABLE.</p>
+            <button id="btn-retry" class="neon-btn outline">RETRY CONNECTION</button>
+        </div>
+    </div>
+
+    <!-- Main Application Interface -->
+    <div id="app-interface" class="hidden">
+        
+        <!-- Canvases -->
+        <div class="canvas-container">
+            <canvas id="bg-canvas"></canvas>
+            <canvas id="drawing-canvas"></canvas>
+            <canvas id="cursor-canvas"></canvas>
+        </div>
+
+        <!-- Hidden Video Element for MediaPipe -->
+        <video id="webcam" autoplay playsinline></video>
+
+        <!-- Top Navigation Bar -->
+        <header class="top-bar glass-panel">
+            <div class="brand">
+                <span class="neon-text">AIRDRAW</span> <span class="dim-text">v2.0</span>
+            </div>
+            <div class="system-status">
+                <div class="status-indicator">
+                    <span class="dot" id="status-cam-dot"></span> CAM
+                </div>
+                <div class="status-indicator">
+                    <span class="dot" id="status-hand-dot"></span> TRACKING
+                </div>
+            </div>
+            <div class="header-actions">
+                <button id="btn-clear" class="icon-btn" title="Clear Canvas">🗑️</button>
+                <button id="btn-export" class="icon-btn" title="Export PNG">💾</button>
+                <button id="btn-fullscreen" class="icon-btn" title="Toggle Fullscreen">⛶</button>
+                <button id="btn-stop-camera" class="icon-btn danger" title="Shutdown">⏻</button>
+            </div>
+        </header>
+
+        <!-- Left Toolbar -->
+        <aside class="side-toolbar glass-panel">
+            <div class="tool-group">
+                <button class="tool-btn active" data-tool="pen" title="Neon Pen (B)">✏️</button>
+                <button class="tool-btn" data-tool="eraser" title="Eraser (E)">🧽</button>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <div class="tool-group">
+                <button id="btn-undo" class="tool-btn" title="Undo (Ctrl+Z)" disabled>↩️</button>
+                <button id="btn-redo" class="tool-btn" title="Redo (Ctrl+Y)" disabled>↪️</button>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="tool-properties">
+                <label>COLOR</label>
+                <input type="color" id="color-picker" value="#00ffff">
+                <div class="preset-colors">
+                    <div class="c-dot" style="background: #00ffff" data-color="#00ffff"></div>
+                    <div class="c-dot" style="background: #ff00ff" data-color="#ff00ff"></div>
+                    <div class="c-dot" style="background: #ffff00" data-color="#ffff00"></div>
+                    <div class="c-dot" style="background: #ffffff" data-color="#ffffff"></div>
+                </div>
+                
+                <label>SIZE</label>
+                <input type="range" id="size-slider" min="2" max="50" value="8">
+            </div>
+        </aside>
+
+        <!-- Right Floating Panel (Camera Preview) -->
+        <div class="floating-panel glass-panel" id="preview-panel">
+            <div class="panel-header">
+                <span>OPTICAL FEED</span>
+                <button id="btn-toggle-preview" class="icon-btn mini">-</button>
+            </div>
+            <div class="preview-container" id="preview-container">
+                <canvas id="preview-canvas"></canvas>
+                <div class="crosshair"></div>
+            </div>
+        </div>
+
+        <!-- Bottom Status Bar -->
+        <footer class="bottom-bar glass-panel">
+            <div class="metrics">
+                <span>GESTURE: <strong id="metric-gesture" class="neon-text">SEARCHING...</strong></span>
+                <span>TOOL: <strong id="metric-tool">PEN</strong></span>
+                <span>STROKES: <strong id="metric-strokes">0</strong></span>
+            </div>
+            <div class="instructions">
+                <span>Pinch index & thumb to draw. Open palm to hover.</span>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- JavaScript - Loaded as module for MediaPipe imports -->
+    <script type="module" src="script.js"></script>
+</body>
+</html>
