@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineTick | Lights. Camera. Action.</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <div class="logo">CineTick<span>.</span></div>
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search for Movies, Events, Plays...">
+                </div>
+            </div>
+            <div class="nav-right">
+                <div class="location-selector">
+                    <select id="locationSelect">
+                        <option value="Bengaluru">Bengaluru</option>
+                        <option value="Mumbai">Mumbai</option>
+                        <option value="Hyderabad">Hyderabad</option>
+                        <option value="Mysuru">Mysuru</option>
+                    </select>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <button class="btn btn-outline">Sign In</button>
+                <div class="mobile-menu-icon"><i class="fas fa-bars"></i></div>
+            </div>
+        </div>
+    </nav>
+    <div class="sub-nav">
+        <ul>
+            <li class="active">Movies</li>
+            <li>Stream</li>
+            <li>Events</li>
+            <li>Plays</li>
+            <li>Sports</li>
+            <li>Activities</li>
+        </ul>
+        <ul>
+            <li>ListYourShow</li>
+            <li>Corporates</li>
+            <li>Offers</li>
+            <li>Gift Cards</li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-bg-elements">
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">Lights. Camera.<br>Your Next Favourite Movie.</h1>
+            <p class="hero-subtitle">Discover the latest blockbusters, indie gems, and thrilling events near you.</p>
+            <button class="btn btn-primary btn-large" onclick="document.getElementById('movies-section').scrollIntoView({behavior: 'smooth'})">Explore Movies <i class="fas fa-arrow-right"></i></button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        
+        <!-- Movies Section -->
+        <section id="movies-section" class="section">
+            <div class="section-header">
+                <h2>Recommended Movies</h2>
+                <div class="category-tabs">
+                    <button class="tab active" data-tab="now-showing">Now Showing</button>
+                    <button class="tab" data-tab="coming-soon">Coming Soon</button>
+                    <button class="tab" data-tab="favourites">My Favourites</button>
+                </div>
+            </div>
+            
+            <div class="filters-row">
+                <select id="languageFilter" class="filter-select">
+                    <option value="all">All Languages</option>
+                    <option value="English">English</option>
+                    <option value="Hindi">Hindi</option>
+                    <option value="Telugu">Telugu</option>
+                </select>
+                <select id="genreFilter" class="filter-select">
+                    <option value="all">All Genres</option>
+                    <option value="Action">Action</option>
+                    <option value="Sci-Fi">Sci-Fi</option>
+                    <option value="Drama">Drama</option>
+                    <option value="Comedy">Comedy</option>
+                </select>
+            </div>
+
+            <!-- Empty State -->
+            <div id="empty-state" class="empty-state hidden">
+                <i class="fas fa-film fa-3x"></i>
+                <h3>No Movies Found</h3>
+                <p>Try adjusting your search or filters.</p>
+            </div>
+
+            <div class="movies-grid" id="moviesGrid">
+                <!-- Movies injected via JS -->
+            </div>
+        </section>
+
+        <!-- Events Section -->
+        <section class="section">
+            <div class="section-header">
+                <h2>The Best Events In Town</h2>
+            </div>
+            <div class="events-grid" id="eventsGrid">
+                <!-- Events injected via JS -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h2>CineTick<span>.</span></h2>
+                <p>Your ultimate entertainment destination.</p>
+                <div class="social-icons">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-youtube"></i>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div class="footer-col">
+                    <h4>About</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help & Support</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 CineTick Demo. For educational purposes only.</p>
+        </div>
+    </footer>
+
+    <!-- Movie Details & Showtime Modal -->
+    <div class="modal-overlay" id="bookingModal">
+        <div class="modal-content large-modal">
+            <button class="close-btn" onclick="closeModal('bookingModal')">&times;</button>
+            <div class="movie-detail-header" id="modalMovieHeader">
+                <!-- Injected via JS -->
+            </div>
+            
+            <div class="booking-flow">
+                <div class="date-selector" id="dateSelector">
+                    <!-- Dates injected via JS -->
+                </div>
+                <div class="cinema-list" id="cinemaList">
+                    <!-- Cinemas & Showtimes injected via JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Seat Selection Modal -->
+    <div class="modal-overlay" id="seatModal">
+        <div class="modal-content seat-modal-content">
+            <button class="close-btn" onclick="closeModal('seatModal')">&times;</button>
+            <div class="seat-header">
+                <h3 id="seatMovieTitle">Movie Title</h3>
+                <p id="seatCinemaInfo">Cinema Name | Date & Time</p>
+            </div>
+            
+            <div class="screen-container">
+                <div class="screen-indicator">Screen This Way</div>
+                <div class="seat-layout" id="seatLayout">
+                    <!-- Seats injected via JS -->
+                </div>
+            </div>
+
+            <div class="seat-legend">
+                <div class="legend-item"><div class="seat available"></div> Available</div>
+                <div class="legend-item"><div class="seat selected"></div> Selected</div>
+                <div class="legend-item"><div class="seat booked"></div> Booked</div>
+            </div>
+
+            <div class="seat-footer">
+                <div class="pricing-info">
+                    <span>Silver: ₹150</span>
+                    <span>Gold: ₹250</span>
+                    <span>Premium: ₹400</span>
+                </div>
+                <div class="action-row">
+                    <div class="total-info">
+                        <span id="selectedSeatCount">0 Seats</span>
+                        <h3 id="totalPrice">₹0</h3>
+                    </div>
+                    <button class="btn btn-primary" id="btnContinueCheckout" disabled>Continue</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout / Summary Modal -->
+    <div class="modal-overlay" id="checkoutModal">
+        <div class="modal-content small-modal">
+            <button class="close-btn" onclick="closeModal('checkoutModal')">&times;</button>
+            <h2>Booking Summary</h2>
+            <div class="summary-details" id="summaryDetails">
+                <!-- Summary injected via JS -->
+            </div>
+            <button class="btn btn-primary btn-block" onclick="confirmBooking()">Confirm Demo Booking</button>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal-overlay" id="successModal">
+        <div class="modal-content small-modal text-center success-content">
+            <div class="success-animation">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>Booking Confirmed!</h2>
+            <p>Your tickets have been booked successfully.</p>
+            <div class="ticket-id" id="ticketIdDisplay">ID: TICK-123456</div>
+            <button class="btn btn-outline mt-20" onclick="closeAllModals()">Back to Home</button>
+        </div>
+        <div id="confetti-container"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
